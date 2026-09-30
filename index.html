@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>退休感恩餐會參加調查</title>
+  <style>
+    :root {
+      --primary-color: #7A2E39; /* 典雅紅白酒色系 */
+      --secondary-color: #D4AF37; /* 金色點綴 */
+      --bg-color: #F9F6F0;
+      --card-bg: #FFFFFF;
+      --text-color: #333333;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px 12px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    /* 頂端 Banner 區域 */
+    .header {
+      background: linear-gradient(135deg, var(--primary-color), #4A1A21);
+      color: white;
+      padding: 32px 24px;
+      text-align: center;
+      border-bottom: 4px solid var(--secondary-color);
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* 活動資訊區塊 */
+    .info-box {
+      background-color: #FFF9F2;
+      border-left: 4px solid var(--secondary-color);
+      margin: 24px;
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .info-item:last-child { margin-bottom: 0; }
+
+    .info-icon {
+      margin-right: 10px;
+      font-size: 1.1rem;
+    }
+
+    .fee-tag {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    /* 表單區域 */
+    form { padding: 0 24px 32px 24px; }
+
+    .form-group { margin-bottom: 20px; }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    label .required { color: #d9534f; margin-left: 4px; }
+
+    input[type="text"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1.5px solid #E0E0E0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+      background-color: #fff;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      margin-top: 6px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    /* 送出按鈕 */
+    .submit-btn {
+      width: 100%;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.1s;
+    }
+
+    .submit-btn:hover { background-color: #5E222A; }
+    .submit-btn:active { transform: scale(0.99); }
+    .submit-btn:disabled { background-color: #CCCCCC; cursor: not-allowed; }
+
+    /* 訊息顯示 */
+    #statusMessage {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      display: none;
+    }
+
+    .success { background-color: #D4EDDA; color: #155724; }
+    .error { background-color: #F8D7DA; color: #721C24; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- 頁首與主題 -->
+  <div class="header">
+    <h1>溫馨傳承 ‧ 榮退感恩餐會</h1>
+    <p>誠摯邀請您共襄盛舉，為退休夥伴送上最真摯的祝福</p>
+  </div>
+
+  <!-- 活動說明（易閱讀美化版面） -->
+  <div class="info-box">
+    <div class="info-item">
+      <span class="info-icon">📅</span>
+      <div><strong>活動時間：</strong>116年1月21日 (三) 18:00</div>
+    </div>
+    <div class="info-item">
+      <span class="info-icon">📍</span>
+      <div><strong>活動地點：</strong>金美滿餐廳<br><small style="color: #666;">(基隆市中山區意義路18號 14、15樓)</small></div>
+    </div>
+    <div class="info-item">
+      <span class="info-icon">📞</span>
+      <div><strong>聯絡人員：</strong>王曉明 0911-234567</div>
+    </div>
+    <div class="info-item">
+      <span class="info-icon">💰</span>
+      <div><strong>活動費用：</strong><span class="fee-tag">本次活動收費 1,200 元</span></div>
+    </div>
+  </div>
+
+  <!-- 報名調查表單 -->
+  <form id="retirementForm">
+    <div class="form-group">
+      <label for="name">姓名<span class="required">*</span></label>
+      <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required>
+    </div>
+
+    <!-- 更新：服務單位下拉式選單 -->
+    <div class="form-group">
+      <label for="unit">服務單位<span class="required">*</span></label>
+      <select id="unit" name="unit" required onchange="toggleOtherUnitInput(this)">
+        <option value="" disabled selected>-- 請選擇服務單位 --</option>
+        <option value="校長室/秘書室">校長室/秘書室</option>
+        <option value="教務處">教務處</option>
+        <option value="學務處">學務處</option>
+        <option value="總務處">總務處</option>
+        <option value="輔導室">輔導室</option>
+        <option value="圖書館">圖書館</option>
+        <option value="人事室/會計室">人事室/會計室</option>
+        <option value="國中部">國中部</option>
+        <option value="高中部">高中部</option>
+        <option value="退休同仁">退休同仁</option>
+        <option value="other">其他（自行輸入）</option>
+      </select>
+      <input type="text" id="otherUnit" style="display: none; margin-top: 8px;" placeholder="請輸入您的服務單位名稱">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">聯絡電話<span class="required">*</span></label>
+      <input type="tel" id="phone" name="phone" placeholder="0912-345678" required>
+    </div>
+
+    <div class="form-group">
+      <label>飲食需求<span class="required">*</span></label>
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" name="diet" value="葷" checked> 葷食
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="diet" value="素" required> 全素/素食
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="remark">備註/祝福的話</label>
+      <textarea id="remark" name="remark" rows="3" placeholder="有其他飲食忌口需求或給退休夥伴的祝福..."></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">確認送出</button>
+    <div id="statusMessage"></div>
+  </form>
+</div>
+
+<script>
+  // ⚠️ 請替換為您從 Google Apps Script 取得的「網頁應用程式 URL」
+  const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbze2pr0WrBleI6R-NBSrdvPyazz6GsHxrpjcZZ1CWnhJpVklSCJ8_-i56jdjmo_k4kj7g/exec";
+
+  // 切換「其他」單位的輸入框顯示邏輯
+  function toggleOtherUnitInput(selectObj) {
+    const otherInput = document.getElementById('otherUnit');
+    if (selectObj.value === 'other') {
+      otherInput.style.display = 'block';
+      otherInput.required = true;
+    } else {
+      otherInput.style.display = 'none';
+      otherInput.required = false;
+      otherInput.value = '';
+    }
+  }
+
+  // 表單送出處理解析
+  document.getElementById('retirementForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById('submitBtn');
+    const statusMsg = document.getElementById('statusMessage');
+
+    // 判斷單位選擇項目
+    let selectedUnit = document.getElementById('unit').value;
+    if (selectedUnit === 'other') {
+      selectedUnit = document.getElementById('otherUnit').value.trim();
+    }
+
+    // 打包表單欄位內容
+    const formData = {
+      name: document.getElementById('name').value.trim(),
+      unit: selectedUnit,
+      phone: document.getElementById('phone').value.trim(),
+      diet: document.querySelector('input[name="diet"]:checked').value,
+      remark: document.getElementById('remark').value.trim()
+    };
+
+    // 按鈕鎖定狀態
+    submitBtn.disabled = true;
+    submitBtn.innerText = "正在送出資料...";
+    statusMsg.style.display = "none";
+
+    // 發送資料至 GAS API
+    fetch(GAS_WEB_APP_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(() => {
+      // 成功提示與重置表單
+      statusMsg.className = "success";
+      statusMsg.innerText = "🎉 感謝您的回覆！報名資料已順利送出。";
+      statusMsg.style.display = "block";
+      document.getElementById('retirementForm').reset();
+      document.getElementById('otherUnit').style.display = 'none';
+    })
+    .catch(error => {
+      // 錯誤提示
+      statusMsg.className = "error";
+      statusMsg.innerText = "❌ 送出失敗，請重試或直接聯繫王曉明 (0911-234567)";
+      statusMsg.style.display = "block";
+      console.error('Error:', error);
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "確認送出";
+    });
+  });
+</script>
+
+</body>
+</html>
