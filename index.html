@@ -47,6 +47,7 @@
       letter-spacing: 1.5px;
       margin-bottom: 12px;
       font-weight: 700;
+      word-break: keep-all;
     }
 
     .slogan-tag {
@@ -100,7 +101,7 @@
 
     .info-item:last-child { margin-bottom: 0; }
 
-    /* 固定 Icon 區域寬度，確保後方第一字完全對齊 */
+    /* 固定 Icon 區域寬度，確保後方第一個字齊頭對齊 */
     .info-icon {
       width: 28px;
       min-width: 28px;
@@ -112,19 +113,22 @@
 
     .info-content {
       flex: 1;
+      word-break: break-word;
     }
 
     /* 聯絡人排列對齊 */
     .contacts-container {
       display: inline-flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
       margin-top: 2px;
+      width: 100%;
     }
 
     .contact-row {
       display: flex;
       gap: 16px;
+      align-items: center;
     }
 
     .contact-name {
@@ -139,9 +143,10 @@
       border-radius: 4px;
       font-weight: bold;
       font-size: 0.9rem;
+      margin-top: 2px;
     }
 
-    /* 置中對齊與美化致謝文字區塊 */
+    /* 致謝文字區塊 */
     .thank-you-card {
       margin: 0 28px 10px 28px;
       padding: 20px 24px;
@@ -213,7 +218,7 @@
       padding: 12px 14px;
       border: 1.5px solid #CBD5E0;
       border-radius: 8px;
-      font-size: 1rem;
+      font-size: 1rem; /* 防止 iOS 點擊時畫面放大 */
       background-color: #FFFFFF;
       transition: all 0.2s;
       font-family: inherit;
@@ -225,7 +230,6 @@
       box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.15);
     }
 
-    /* 驗證未通過時的紅框 */
     .input-error {
       border-color: #E53E3E !important;
       background-color: #FFF5F5 !important;
@@ -240,7 +244,7 @@
 
     .radio-group {
       display: flex;
-      gap: 28px;
+      gap: 32px;
       margin-top: 8px;
     }
 
@@ -250,11 +254,12 @@
       gap: 8px;
       cursor: pointer;
       font-size: 1rem;
+      padding: 4px 0;
     }
 
     .radio-option input[type="radio"] {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       accent-color: var(--primary-color);
     }
 
@@ -277,7 +282,6 @@
     .submit-btn:active { transform: scale(0.99); }
     .submit-btn:disabled { background-color: #A0AEC0; cursor: not-allowed; }
 
-    /* 狀態提示 */
     #statusMessage {
       margin-top: 18px;
       padding: 14px;
@@ -289,6 +293,72 @@
 
     .success { background-color: #C6F6D5; color: #22543D; border: 1px solid #9AE6B4; }
     .error { background-color: #FED7D7; color: #742A2A; border: 1px solid #FEB2B2; }
+
+    /* ===================================================
+       📱 手機裝置專用響應式優化 (Responsive Styles)
+       =================================================== */
+    @media (max-width: 480px) {
+      body {
+        padding: 12px 6px;
+      }
+
+      .header {
+        padding: 24px 16px 20px 16px;
+      }
+
+      .header h1 {
+        font-size: 1.45rem;
+        line-height: 1.35;
+      }
+
+      .slogan-tag {
+        font-size: 0.85rem;
+        padding: 4px 12px;
+      }
+
+      .letter-body {
+        padding: 20px 16px;
+        font-size: 0.95rem;
+      }
+
+      .info-box {
+        margin: 0 16px 20px 16px;
+        padding: 16px;
+      }
+
+      /* 螢幕較窄時，聯絡人姓名與電話垂直排列 */
+      .contact-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        margin-bottom: 6px;
+      }
+
+      .contact-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .contact-name {
+        font-weight: 600;
+      }
+
+      .thank-you-card {
+        margin: 0 16px 10px 16px;
+        padding: 16px 14px;
+      }
+
+      .thank-you-line1 { font-size: 0.92rem; }
+      .thank-you-line2 { font-size: 1.05rem; }
+      .thank-you-line3 { font-size: 0.95rem; }
+
+      form {
+        padding: 20px 16px 28px 16px;
+      }
+
+      .form-title {
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -311,7 +381,7 @@
     </p>
   </div>
 
-  <!-- 活動資訊（第一字完全齊頭對齊、數字皆為半形） -->
+  <!-- 活動資訊（第一個字對齊、數字皆為半形） -->
   <div class="info-box">
     <!-- 1. 時間 -->
     <div class="info-item">
@@ -354,7 +424,7 @@
     </div>
   </div>
 
-  <!-- 置中對齊與美化致謝文字 -->
+  <!-- 致謝文字區塊 -->
   <div class="thank-you-card">
     <div class="thank-you-line1">感謝您撥冗參與，讓我們一起送上這份屬於體育人的深厚情誼。</div>
     <div class="thank-you-line2">一甲子教育情．四十載體育魂</div>
@@ -440,7 +510,7 @@
     document.querySelectorAll('.error-hint').forEach(el => el.style.display = 'none');
   }
 
-  // 手機號碼格式與長度邏輯檢查（支援 0912345678 或 0912-345678）
+  // 手機號碼格式與長度邏輯檢查
   function validatePhone(phoneStr) {
     const cleanPhone = phoneStr.replace(/[-\s]/g, '');
     const phoneRegex = /^09\d{8}$/;
