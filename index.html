@@ -19,7 +19,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      line-height: 1.7;
+      line-height: 1.75;
       padding: 24px 12px;
     }
 
@@ -86,7 +86,7 @@
       background-color: #F8FAFC;
       border: 1px solid #E2E8F0;
       border-left: 5px solid var(--secondary-color);
-      margin: 20px 28px;
+      margin: 0 28px 24px 28px;
       padding: 20px;
       border-radius: 8px;
     }
@@ -106,6 +106,27 @@
       line-height: 1.4;
     }
 
+    .info-content {
+      flex: 1;
+    }
+
+    /* 聯絡人排列對齊 */
+    .contacts-container {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 16px;
+    }
+
+    .contact-name {
+      min-width: 85px;
+    }
+
     .fee-badge {
       display: inline-block;
       background-color: #E2E8F0;
@@ -116,11 +137,45 @@
       font-size: 0.9rem;
     }
 
+    /* 置中對齊與美化文字區塊 */
+    .thank-you-card {
+      margin: 0 28px 10px 28px;
+      padding: 20px 24px;
+      background: linear-gradient(180deg, #FFFDF9 0%, #FDF8EF 100%);
+      border: 1px solid #E2D6B5;
+      border-radius: 12px;
+      text-align: center;
+      color: var(--primary-color);
+      box-shadow: inset 0 0 10px rgba(197, 160, 89, 0.05);
+    }
+
+    .thank-you-line1 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #2D3748;
+      margin-bottom: 8px;
+    }
+
+    .thank-you-line2 {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #B7791F;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .thank-you-line3 {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+    }
+
     /* 表單區域 */
     form {
       padding: 0 28px 36px 28px;
       border-top: 1px dashed #CBD5E0;
-      margin-top: 10px;
+      margin-top: 20px;
       padding-top: 28px;
     }
 
@@ -148,7 +203,8 @@
 
     input[type="text"],
     input[type="tel"],
-    select {
+    select,
+    textarea {
       width: 100%;
       padding: 12px 14px;
       border: 1.5px solid #CBD5E0;
@@ -156,12 +212,26 @@
       font-size: 1rem;
       background-color: #FFFFFF;
       transition: all 0.2s;
+      font-family: inherit;
     }
 
-    input:focus, select:focus {
+    input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: var(--primary-color);
       box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.15);
+    }
+
+    /* 驗證未通過時的紅框 */
+    .input-error {
+      border-color: #E53E3E !important;
+      background-color: #FFF5F5 !important;
+    }
+
+    .error-hint {
+      color: #E53E3E;
+      font-size: 0.85rem;
+      margin-top: 4px;
+      display: none;
     }
 
     .radio-group {
@@ -220,57 +290,89 @@
 <body>
 
 <div class="container">
-  <!-- 頁首與精神標語 -->
+  <!-- 頁首與精神標語（全形標點） -->
   <div class="header">
     <h1>基隆女中美男子老師榮退餐會調查表</h1>
-    <div class="slogan-tag">一甲子教育情 ‧ 四十載體育魂</div>
+    <div class="slogan-tag">一甲子教育情．四十載體育魂</div>
   </div>
 
-  <!-- 說明文字區（完整照錄 PDF 文字） -->
+  <!-- 說明文字區（全形標點） -->
   <div class="letter-body">
-    <div class="salutation">敬愛的體育界先進、教練及好友:</div>
+    <div class="salutation">敬愛的體育界先進、教練及好友：</div>
     <p class="letter-p">
-      美男子老師長年奉獻基隆教育及體育發展,在基隆女中與基隆田徑訓練中心服務四十餘年,秉持對教育與體育的熱愛,長期投入田徑人才培育,栽培無數優秀選手、國手、教師及社會各界菁英,對基隆體育教育貢獻卓著。
+      美男子老師長年奉獻基隆教育及體育發展，在基隆女中與基隆田徑訓練中心服務四十餘年，秉持對教育與體育的熱愛，長期投入田徑人才培育，栽培無數優秀選手、國手、教師及社會各界菁英，對基隆體育教育貢獻卓著。
     </p>
     <p class="letter-p">
-      為感謝美男子老師多年來的辛勞與付出,特別舉辦榮退餐會,邀請體育界各方先進、教練、選手及歷屆夥伴共聚一堂,一同回憶過往歲月,向老師表達最誠摯的祝福與感謝。
+      為感謝美男子老師多年來的辛勞與付出，特別舉辦榮退餐會，邀請體育界各方先進、教練、選手及歷屆夥伴共聚一堂，一同回憶過往歲月，向老師表達最誠摯的祝福與感謝。
     </p>
   </div>
 
-  <!-- 活動資訊 -->
+  <!-- 活動資訊（時間地點分列、聯絡人對齊） -->
   <div class="info-box">
+    <!-- 1. 時間 -->
     <div class="info-item">
-      <span class="info-icon">📌</span>
-      <div><strong>活動時間地點：</strong>暫定116年1月21日(四)下午5:30 阿樂哈海鮮景觀餐廳<br><small style="color: #718096;">(基隆市中正區義一路18號14、15樓 土地銀行電梯)</small></div>
+      <span class="info-icon">📅</span>
+      <div class="info-content">
+        <strong>活動時間：</strong>１１６年１月２１日（四）下午５：３０
+      </div>
     </div>
+    <!-- 2. 地點 -->
+    <div class="info-item">
+      <span class="info-icon">📍</span>
+      <div class="info-content">
+        <strong>活動地點：</strong>阿樂哈海鮮景觀餐廳<br>
+        <small style="color: #718096;">（基隆市中正區義一路１８號１４、１５樓 土地銀行電梯）</small>
+      </div>
+    </div>
+    <!-- 3. 聯絡人對齊 -->
     <div class="info-item">
       <span class="info-icon">📞</span>
-      <div><strong>活動聯絡人：</strong>紀富宏老師 0932-925452<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;李瀚宇老師 0925-198002</div>
+      <div class="info-content">
+        <strong>活動聯絡人：</strong>
+        <div class="contacts-container">
+          <div class="contact-row">
+            <span class="contact-name">紀富宏老師</span>
+            <span class="contact-phone">０９３２－９２５４５２</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-name">李瀚宇老師</span>
+            <span class="contact-phone">０９２５－１９８００２</span>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- 4. 費用 -->
     <div class="info-item">
       <span class="info-icon">💰</span>
-      <div><strong>活動費用：</strong><span class="fee-badge">本次活動計收 1200 元</span></div>
+      <div class="info-content">
+        <strong>活動費用：</strong><span class="fee-badge">本次活動計收 １２０0 元。</span>
+      </div>
     </div>
   </div>
 
-  <div style="padding: 0 28px; color: #4A5568; font-style: italic; font-size: 0.95rem;">
-    感謝您撥冗參與,讓我們一起送上這份屬於體育人的深厚情誼。<br>
-    感謝美男子老師,一路為基隆體育薪傳不息!
+  <!-- 置中對齊與美化致謝文字 -->
+  <div class="thank-you-card">
+    <div class="thank-you-line1">感謝您撥冗參與，讓我們一起送上這份屬於體育人的深厚情誼。</div>
+    <div class="thank-you-line2">一甲子教育情．四十載體育魂</div>
+    <div class="thank-you-line3">感謝美男子老師，一路為基隆體育薪傳不息！</div>
   </div>
 
   <!-- 調查回覆表單 -->
-  <form id="retirementForm">
+  <form id="retirementForm" novalidate>
     <div class="form-title">📝 敬請參加者協助填寫以下調查：</div>
 
+    <!-- 1. 姓名 -->
     <div class="form-group">
-      <label for="name">1. 姓名<span class="required">*</span></label>
+      <label for="name">１．姓名<span class="required">*</span></label>
       <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required>
+      <div class="error-hint" id="nameError">請填寫您的姓名。</div>
     </div>
 
+    <!-- 2. 服務單位分類 -->
     <div class="form-group">
-      <label for="unitCategory">2. 服務單位分類<span class="required">*</span></label>
+      <label for="unitCategory">２．服務單位／職稱<span class="required">*</span></label>
       <select id="unitCategory" name="unitCategory" required onchange="toggleOtherUnitInput(this)">
-        <option value="" disabled selected>-- 請選擇服務單位類別 --</option>
+        <option value="" disabled selected>－－ 請選擇服務單位類別 －－</option>
         <option value="高中">高中</option>
         <option value="國中">國中</option>
         <option value="國小">國小</option>
@@ -278,23 +380,34 @@
         <option value="other">其他（自行輸入）</option>
       </select>
       <input type="text" id="otherUnit" style="display: none; margin-top: 10px;" placeholder="請輸入您的服務單位名稱與職稱">
+      <div class="error-hint" id="unitError">請選擇服務單位；若選其他請補充說明。</div>
     </div>
 
+    <!-- 3. 聯絡電話 -->
     <div class="form-group">
-      <label for="phone">3. 聯絡電話<span class="required">*</span></label>
-      <input type="tel" id="phone" name="phone" placeholder="例如：0912-345678" required>
+      <label for="phone">３．聯絡電話（手機）<span class="required">*</span></label>
+      <input type="tel" id="phone" name="phone" placeholder="例如：0912345678 或 0912-345678" maxlength="12" required>
+      <div class="error-hint" id="phoneError">請輸入正確的台灣手機號碼（10 位數字）。</div>
     </div>
 
+    <!-- 4. 餐飲需求 -->
     <div class="form-group">
-      <label>4. 餐飲需求<span class="required">*</span></label>
+      <label>４．餐飲需求<span class="required">*</span></label>
       <div class="radio-group">
         <label class="radio-option">
           <input type="radio" name="diet" value="葷" checked> 葷
         </label>
         <label class="radio-option">
-          <input type="radio" name="diet" value="素" required> 素
+          <input type="radio" name="diet" value="素"> 素
         </label>
       </div>
+      <div class="error-hint" id="dietError">請選擇餐飲需求。</div>
+    </div>
+
+    <!-- 5. 備註 / 祝福的話 -->
+    <div class="form-group">
+      <label for="remark">５．備註／祝福的話</label>
+      <textarea id="remark" name="remark" rows="3" placeholder="歡迎留下想給美男子老師的祝福或相關備註事項..."></textarea>
     </div>
 
     <button type="submit" class="submit-btn" id="submitBtn">確認送出回覆</button>
@@ -303,50 +416,100 @@
 </div>
 
 <script>
-  // 已填入您的 Google Apps Script 網頁應用程式 URL
+  // Google Apps Script 網頁應用程式 URL
   const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbze2pr0WrBleI6R-NBSrdvPyazz6GsHxrpjcZZ1CWnhJpVklSCJ8_-i56jdjmo_k4kj7g/exec";
 
-  // 控制「其他服務單位」輸入框的動態顯示/隱藏
+  // 控制「其他服務單位」輸入框
   function toggleOtherUnitInput(selectObj) {
     const otherInput = document.getElementById('otherUnit');
     if (selectObj.value === 'other') {
       otherInput.style.display = 'block';
-      otherInput.required = true;
     } else {
       otherInput.style.display = 'none';
-      otherInput.required = false;
       otherInput.value = '';
     }
   }
 
-  // 表單送出處理邏輯
+  // 清除錯誤樣式
+  function clearErrors() {
+    document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+    document.querySelectorAll('.error-hint').forEach(el => el.style.display = 'none');
+  }
+
+  // 手機號碼格式與長度邏輯檢查（支援 0912345678 或 0912-345678）
+  function validatePhone(phoneStr) {
+    const cleanPhone = phoneStr.replace(/[-\s]/g, '');
+    const phoneRegex = /^09\d{8}$/;
+    return phoneRegex.test(cleanPhone);
+  }
+
+  // 表單送出檢查與處理
   document.getElementById('retirementForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    clearErrors();
 
-    const submitBtn = document.getElementById('submitBtn');
+    let isValid = true;
+    const nameInput = document.getElementById('name');
+    const unitSelect = document.getElementById('unitCategory');
+    const otherUnitInput = document.getElementById('otherUnit');
+    const phoneInput = document.getElementById('phone');
     const statusMsg = document.getElementById('statusMessage');
 
-    // 處理服務單位欄位值
-    const categorySelect = document.getElementById('unitCategory');
-    let unitValue = categorySelect.value;
-    if (unitValue === 'other') {
-      unitValue = document.getElementById('otherUnit').value.trim();
+    // 1. 檢查姓名
+    if (!nameInput.value.trim()) {
+      nameInput.classList.add('input-error');
+      document.getElementById('nameError').style.display = 'block';
+      isValid = false;
     }
 
-    // 收集表單資料
+    // 2. 檢查服務單位
+    if (!unitSelect.value) {
+      unitSelect.classList.add('input-error');
+      document.getElementById('unitError').style.display = 'block';
+      isValid = false;
+    } else if (unitSelect.value === 'other' && !otherUnitInput.value.trim()) {
+      otherUnitInput.classList.add('input-error');
+      document.getElementById('unitError').innerText = '請填寫自訂的服務單位／職稱。';
+      document.getElementById('unitError').style.display = 'block';
+      isValid = false;
+    }
+
+    // 3. 檢查電話長度與格式
+    if (!phoneInput.value.trim() || !validatePhone(phoneInput.value.trim())) {
+      phoneInput.classList.add('input-error');
+      document.getElementById('phoneError').style.display = 'block';
+      isValid = false;
+    }
+
+    // 4. 若驗證未通過，停止送出
+    if (!isValid) {
+      statusMsg.className = "error";
+      statusMsg.innerText = "⚠️ 請檢查紅框標示之項目，補充完整後再行送出。";
+      statusMsg.style.display = "block";
+      return;
+    }
+
+    // 彙整資料
+    let unitValue = unitSelect.value;
+    if (unitValue === 'other') {
+      unitValue = otherUnitInput.value.trim();
+    }
+
     const formData = {
-      name: document.getElementById('name').value.trim(),
+      name: nameInput.value.trim(),
       unit: unitValue,
-      phone: document.getElementById('phone').value.trim(),
-      diet: document.querySelector('input[name="diet"]:checked').value
+      phone: phoneInput.value.trim(),
+      diet: document.querySelector('input[name="diet"]:checked').value,
+      remark: document.getElementById('remark').value.trim()
     };
 
     // 鎖定按鈕
+    const submitBtn = document.getElementById('submitBtn');
     submitBtn.disabled = true;
     submitBtn.innerText = "正在送出資料...";
     statusMsg.style.display = "none";
 
-    // 送出至後端 Google Apps Script
+    // 發送至後端 Google Apps Script
     fetch(GAS_WEB_APP_URL, {
       method: 'POST',
       mode: 'no-cors',
