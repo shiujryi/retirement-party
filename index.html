@@ -100,10 +100,14 @@
 
     .info-item:last-child { margin-bottom: 0; }
 
+    /* 固定 Icon 區域寬度，確保後方第一字完全對齊 */
     .info-icon {
-      margin-right: 12px;
+      width: 28px;
+      min-width: 28px;
       font-size: 1.2rem;
       line-height: 1.4;
+      display: inline-block;
+      text-align: left;
     }
 
     .info-content {
@@ -137,7 +141,7 @@
       font-size: 0.9rem;
     }
 
-    /* 置中對齊與美化文字區塊 */
+    /* 置中對齊與美化致謝文字區塊 */
     .thank-you-card {
       margin: 0 28px 10px 28px;
       padding: 20px 24px;
@@ -290,13 +294,13 @@
 <body>
 
 <div class="container">
-  <!-- 頁首與精神標語（全形標點） -->
+  <!-- 頁首與精神標語 -->
   <div class="header">
     <h1>基隆女中美男子老師榮退餐會調查表</h1>
     <div class="slogan-tag">一甲子教育情．四十載體育魂</div>
   </div>
 
-  <!-- 說明文字區（全形標點） -->
+  <!-- 說明文字區 -->
   <div class="letter-body">
     <div class="salutation">敬愛的體育界先進、教練及好友：</div>
     <p class="letter-p">
@@ -307,13 +311,13 @@
     </p>
   </div>
 
-  <!-- 活動資訊（時間地點分列、聯絡人對齊） -->
+  <!-- 活動資訊（第一字完全齊頭對齊、數字皆為半形） -->
   <div class="info-box">
     <!-- 1. 時間 -->
     <div class="info-item">
       <span class="info-icon">📅</span>
       <div class="info-content">
-        <strong>活動時間：</strong>１１６年１月２１日（四）下午５：３０
+        <strong>活動時間：</strong>116年1月21日(四)下午5:30
       </div>
     </div>
     <!-- 2. 地點 -->
@@ -321,10 +325,10 @@
       <span class="info-icon">📍</span>
       <div class="info-content">
         <strong>活動地點：</strong>阿樂哈海鮮景觀餐廳<br>
-        <small style="color: #718096;">（基隆市中正區義一路１８號１４、１５樓 土地銀行電梯）</small>
+        <small style="color: #718096;">（基隆市中正區義一路18號14、15樓 土地銀行電梯）</small>
       </div>
     </div>
-    <!-- 3. 聯絡人對齊 -->
+    <!-- 3. 聯絡人 -->
     <div class="info-item">
       <span class="info-icon">📞</span>
       <div class="info-content">
@@ -332,20 +336,20 @@
         <div class="contacts-container">
           <div class="contact-row">
             <span class="contact-name">紀富宏老師</span>
-            <span class="contact-phone">０９３２－９２５４５２</span>
+            <span class="contact-phone">0932-925452</span>
           </div>
           <div class="contact-row">
             <span class="contact-name">李瀚宇老師</span>
-            <span class="contact-phone">０９２５－１９８００２</span>
+            <span class="contact-phone">0925-198002</span>
           </div>
         </div>
       </div>
     </div>
-    <!-- 4. 費用 -->
+    <!-- 4. 備註 -->
     <div class="info-item">
       <span class="info-icon">💰</span>
       <div class="info-content">
-        <strong>活動費用：</strong><span class="fee-badge">本次活動計收 １２０0 元。</span>
+        <strong>備註：</strong><span class="fee-badge">本次活動計收 1200 元。</span>
       </div>
     </div>
   </div>
