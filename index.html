@@ -444,7 +444,7 @@
 
     <!-- 2. 服務單位分類 -->
     <div class="form-group">
-      <label for="unitCategory">２．服務單位／職稱<span class="required">*</span></label>
+      <label for="unitCategory">２．服務單位<span class="required">*</span></label>
       <select id="unitCategory" name="unitCategory" required onchange="toggleOtherUnitInput(this)">
         <option value="" disabled selected>－－ 請選擇服務單位類別 －－</option>
         <option value="高中">高中</option>
@@ -453,7 +453,7 @@
         <option value="退休">退休</option>
         <option value="other">其他（自行輸入）</option>
       </select>
-      <input type="text" id="otherUnit" style="display: none; margin-top: 10px;" placeholder="請輸入您的服務單位名稱與職稱">
+      <input type="text" id="otherUnit" style="display: none; margin-top: 10px;" placeholder="請輸入您的服務單位名稱">
       <div class="error-hint" id="unitError">請選擇服務單位；若選其他請補充說明。</div>
     </div>
 
