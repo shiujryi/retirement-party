@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+/<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
@@ -419,7 +419,7 @@
     <div class="info-item">
       <span class="info-icon">💰</span>
       <div class="info-content">
-        <strong>備註：</strong><span class="fee-badge">1.調查截止日：116.1.10(日)2.本次活動計收 1200 元。</span>
+        <strong>備註：</strong><span class="fee-badge">1.調查截止日：116.1.10(星期日)；2.本次活動計收 1200 元。</span>
       </div>
     </div>
   </div>
@@ -487,11 +487,29 @@
     <button type="submit" class="submit-btn" id="submitBtn">確認送出回覆</button>
     <div id="statusMessage"></div>
   </form>
+    <p id="surveyClosedMessage" class="thank-you-card" role="status" hidden>本次調查已截止，感謝您的關心。</p>
 </div>
 
 <script>
   // Google Apps Script 網頁應用程式 URL
   const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbze2pr0WrBleI6R-NBSrdvPyazz6GsHxrpjcZZ1CWnhJpVklSCJ8_-i56jdjmo_k4kj7g/exec";
+    const surveyDeadline = Date.parse('2027-01-11T00:00:00+08:00');
+  const retirementForm = document.getElementById('retirementForm');
+  const surveyClosedMessage = document.getElementById('surveyClosedMessage');
+
+  function closeSurveyIfExpired() {
+    if (Date.now() < surveyDeadline) return false;
+
+    retirementForm.hidden = true;
+    surveyClosedMessage.hidden = false;
+    return true;
+  }
+
+  if (!closeSurveyIfExpired()) {
+    const deadlineTimer = setInterval(() => {
+      if (closeSurveyIfExpired()) clearInterval(deadlineTimer);
+    }, 1000);
+  }
 
   // 控制「其他服務單位」輸入框
   function toggleOtherUnitInput(selectObj) {
@@ -520,6 +538,7 @@
   // 表單送出檢查與處理
   document.getElementById('retirementForm').addEventListener('submit', function(e) {
     e.preventDefault();
+        if (closeSurveyIfExpired()) return;
     clearErrors();
 
     let isValid = true;
